@@ -1,7 +1,12 @@
 Dancer-CommandLine
 
-Very simple little helper that lets you run Debug and Warning both from
-a non-dancer script and from Dancer.
+Very simple little helper that simulates parts of Dancer (e.g. warning, debug)
+without actually loading anything from Dancer. 
+
+I am not at all sure that this is the way to go. Maybe it would be better to 
+load parts of Dancer instead of duplicating the stuff. It would certainly be 
+more elegant. For now, it does what i need. See module for more on the 
+rationale or use case I am interested in.
 
 INSTALLATION
 
@@ -19,20 +24,7 @@ perldoc command.
 
     perldoc Dancer::CommandLine
 
-You can also look for information at:
-
-    RT, CPAN's request tracker
-        http://rt.cpan.org/NoAuth/Bugs.html?Dist=Dancer-CommandLine
-
-    AnnoCPAN, Annotated CPAN documentation
-        http://annocpan.org/dist/Dancer-CommandLine
-
-    CPAN Ratings
-        http://cpanratings.perl.org/d/Dancer-CommandLine
-
-    Search CPAN
-        http://search.cpan.org/dist/Dancer-CommandLine/
-
+This module lives on github.com.
 
 LICENSE AND COPYRIGHT
 

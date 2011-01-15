@@ -163,7 +163,8 @@ C_FILES  =
 O_FILES  = 
 H_FILES  = 
 MAN1PODS = 
-MAN3PODS = lib/Dancer/CommandLine.pm
+MAN3PODS = lib/Dancer/CommandLine.pm \
+	lib/Dancer/CommandLine/Config.pm
 
 # Where is the Config information that we are using/depend on
 CONFIGDEP = $(PERL_ARCHLIB)$(DFSEP)Config.pm $(PERL_INC)$(DFSEP)config.h
@@ -185,9 +186,12 @@ PERL_ARCHIVE       = $(PERL_INC)/cygperl5_10.dll
 PERL_ARCHIVE_AFTER = 
 
 
-TO_INST_PM = lib/Dancer/CommandLine.pm
+TO_INST_PM = lib/Dancer/CommandLine.pm \
+	lib/Dancer/CommandLine/Config.pm
 
-PM_TO_BLIB = lib/Dancer/CommandLine.pm \
+PM_TO_BLIB = lib/Dancer/CommandLine/Config.pm \
+	blib/lib/Dancer/CommandLine/Config.pm \
+	lib/Dancer/CommandLine.pm \
 	blib/lib/Dancer/CommandLine.pm
 
 
@@ -411,8 +415,10 @@ POD2MAN = $(POD2MAN_EXE)
 
 
 manifypods : pure_all  \
+	lib/Dancer/CommandLine/Config.pm \
 	lib/Dancer/CommandLine.pm
 	$(NOECHO) $(POD2MAN) --section=3 --perm_rw=$(PERM_RW) \
+	  lib/Dancer/CommandLine/Config.pm $(INST_MAN3DIR)/Dancer.CommandLine.Config.$(MAN3EXT) \
 	  lib/Dancer/CommandLine.pm $(INST_MAN3DIR)/Dancer.CommandLine.$(MAN3EXT) 
 
 
@@ -804,6 +810,7 @@ ppd :
 
 pm_to_blib : $(FIRST_MAKEFILE) $(TO_INST_PM)
 	$(NOECHO) $(ABSPERLRUN) -MExtUtils::Install -e 'pm_to_blib({@ARGV}, '\''$(INST_LIB)/auto'\'', q[$(PM_FILTER)], '\''$(PERM_DIR)'\'')' -- \
+	  lib/Dancer/CommandLine/Config.pm blib/lib/Dancer/CommandLine/Config.pm \
 	  lib/Dancer/CommandLine.pm blib/lib/Dancer/CommandLine.pm 
 	$(NOECHO) $(TOUCH) pm_to_blib
 
