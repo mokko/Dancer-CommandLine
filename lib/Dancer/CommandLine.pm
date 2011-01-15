@@ -50,7 +50,7 @@ loaded.
 
 sub Debug {
 	if ( defined(&Dancer::Logger::debug) ) {
-		Dancer::Logger::debug (@_);
+		goto &Dancer::Logger::debug;
 	} else {
 		foreach (@_) {
 			print "$_\n";
@@ -67,7 +67,7 @@ Use Dancer's warning function if available or pass message to perl's warn.
 sub Warning {
 
 	if ( defined(&Dancer::Logger::warning) ) {
-		Dancer::Logger::warning (@_);
+		goto &Dancer::Logger::warning;
 	} else {
 		warn @_;
 	}

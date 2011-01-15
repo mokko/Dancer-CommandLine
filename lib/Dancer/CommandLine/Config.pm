@@ -16,8 +16,11 @@ Load and test config information from Dancer's config file.
 
 	use Dancer::CommandLine::Config;
 	my $c=new Dancer::CommandLine::Config ('path/to/app/conf.yml');
-	my $conf=$c->get_config;
+
 	$c->test_conf_var(var1, var2);
+
+	my $config=$c->get_config;
+	print $config->{logger};
 
 =head1 METHODS
 
